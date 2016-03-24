@@ -1,0 +1,23 @@
+numcell=[200:100:10000];
+
+N=length(numcell);
+
+    dold=cell_distributions_all(:,end)./100;
+    
+for i=1:N
+    
+    h=strcat('ncell=',num2str(numcell(i),'%.5f'),'.mat');
+    
+    load(h) %load the corrent cell distribution
+    
+    d=cell_distributions_all(:,end)./numcell(i); %cell distribution normalized by the number of cells
+    
+    dis=(d-dold).^2; 
+    
+    distr(i)=sum(dis); %distance between the actual and previous distribution
+    
+    dold=d; 
+    
+end
+%%
+plot(numcell(2:end), distr(2:end))
