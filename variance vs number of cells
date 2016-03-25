@@ -20,4 +20,7 @@ for i=1:N
     
 end
 %%
-plot(numcell(2:end), distr(2:end))
+%%
+distance=sqrt.(distr);
+plot(numcell(2:end), distance(2:end))
+
